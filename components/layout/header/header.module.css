@@ -1,0 +1,110 @@
+.header {
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--nav-bar-bg-color);
+    padding: 14px 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.navLinks {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.navLinks li a {
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: capitalize;
+    color: var(--secondary-color);
+    padding-bottom: 6px;
+    position: relative;
+    
+}
+
+.navLinks li a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background-color: var(--dark-color);
+    width: 0;
+}
+
+.navLinks li a:hover::before {
+    width: 100%;
+    transition: var(--default-animation);
+}
+
+.navLinks li a:hover {
+    color: var(--black-color);
+}
+
+.nav-links li a.active-page-select {
+    color: var(--black-color);
+}
+
+.navLinks li a.active-page-select::before {
+    width: 100%;
+}
+
+.navLinks li {
+    margin-right: 36px;
+}
+
+.navLogo {
+    width: 150px;
+    display: block;
+}
+
+.navLogo img {
+    display: block;
+}
+
+.userSignup img,
+.searchIcon img {
+    display: block;
+    margin-right: 36px;
+    height: 22px;
+    width: 22px;
+}
+
+.navRightIcon {
+    display: flex;
+    align-items: center;
+}
+
+.navRightIcon img {
+    transition: var(--default-animation);
+}
+
+.navRightIcon img:hover {
+    transform: scale(1.2);
+}
+
+
+
+:root {
+    --primary-color: #79B531;
+    --secondary-color: #3B5638;
+    --accent-color: #D1FCCC;
+    --dark-color: #082219;
+    --black-color: #000000;
+    --text-primary-color: #FFFFFF;
+    --text-dark-color: #000000;
+    --bg-light-color: #D1FCCC;
+    --nav-bar-bg-color: #EEFFD3;
+    --span-text-color: #57B36D;
+    --light-green-color: #D1FCCC;
+    /* default animation speed */
+    --default-animation: all .3s ease;
+}

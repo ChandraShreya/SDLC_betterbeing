@@ -1,26 +1,203 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
+/* ===== FONT SYSTEM ===== */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins), sans-serif;
+}
+
+
+.heading-1,
+.heading-2,
+.heading-3 {
+  font-family: var(--font-heading), serif;
+}
+
+
+
+/* universal */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* cmn-class */
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+.container {
+    max-width: 1550px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+section img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+.cmnBtn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 10px;
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-primary-color);
+    background-color: var(--dark-color);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.cmnBtn::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #21644D;
+    transition: var(--default-animation);
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.cmnBtn:hover::after {
+    width: 100%;
+}
+
+h1,
+.heading-1 {
+    font-size: 72px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-primary-color);
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h2,
+.heading-2 {
+    font-size: 48px;
+    font-weight: 650;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    text-transform: capitalize;
+    font-family: 'Times New Roman', Times, serif;
+    color: #082219;
+}
+
+h3 {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.heading-3 {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+
+h4,
+.heading-4 {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h5,
+.heading-5 {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+h6,
+.heading-6 {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+p,
+.paragraph {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.primary-color-text {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--span-text-color);
+    text-transform: capitalize;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.cmn-gap {
+    padding: 80px 0;
+}
+
+:root {
+    --primary-color: #79B531;
+    --secondary-color: #3B5638;
+    --accent-color: #D1FCCC;
+    --dark-color: #082219;
+    --black-color: #000000;
+    --text-primary-color: #FFFFFF;
+    --text-dark-color: #000000;
+    --bg-light-color: #D1FCCC;
+    --nav-bar-bg-color: #EEFFD3;
+    --span-text-color: #57B36D;
+    --light-green-color: #D1FCCC;
+    /* default animation speed */
+    --default-animation: all .3s ease;
 }

@@ -1,0 +1,171 @@
+.featuredBlogSection {
+    padding: 80px 0;
+    position: relative;
+}
+
+.headerRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.sectionTitle {
+    font-size: 42px;
+    font-weight: 600;
+}
+
+.navButtons {
+    position: absolute;
+    display: flex;
+    gap: 12px;
+    bottom: 2%;
+    right: 10%;
+}
+
+.navBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: #d1fccc;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.navBtn:hover {
+    background: #3b5638;
+    color: #fff;
+}
+
+.swiper {
+    width: 100%;
+}
+
+.card {
+    background: #fafafa;
+    border-radius: 15px;
+    padding: 15px;
+    transition: 0.3s;
+    height: 100%;
+}
+
+.card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.cardImg {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.cardImg img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: var(--default-animation);
+}
+
+/* Image overlay */
+.cardImg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.227);
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.card:hover .cardImg::after {
+  opacity: 1;
+}
+
+.card:hover .cardImg img {
+  transform: scale(1.1);
+}
+
+
+.tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #d1fccc;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.bookmark {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    /* background: #fff; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.bookmark svg {
+    font-size: 18px;
+}
+
+.meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.meta span img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    display: block;
+}
+.cardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardContent h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-family: var(--font-poppins), sans-serif;
+    font-weight: 700;   
+}
+
+.cardContent p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+    font-family: var(--font-poppins), sans-serif;
+}
+
+.readMore {
+    font-size: 16px;
+    color: #082219;
+    text-decoration: none;
+}
+.swiper-slide {
+  height: auto;
+  display: flex;
+}

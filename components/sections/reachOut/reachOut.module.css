@@ -1,0 +1,50 @@
+.reachOutSec {
+  background-color: var(--text-primary-color);
+}
+
+.reachOutChild {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+  align-items: center;
+}
+
+.reachOutLeft,
+.reachOutRight {
+  width: 50%;
+  padding: 0 15px;
+}
+
+/* LEFT */
+.reachOutImg img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* RIGHT */
+.reachOutRight h2 {
+  margin-bottom: 5px;
+}
+
+.reachOutRight span {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.reachOutRight p {
+  color: rgba(8, 34, 25, 0.5);
+  line-height: 1.5;
+}
+
+.textParagraph1 {
+  margin-bottom: 10px;
+}
+
+.textParagraph2 {
+  margin-bottom: 30px;
+}
+
+.reachBtn {
+  margin-top: 10px;
+}

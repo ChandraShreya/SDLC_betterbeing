@@ -1,0 +1,198 @@
+.footerSec {
+  background: url("/images/footer-bg.png") center/cover no-repeat;
+  padding: 60px 0;
+}
+
+/* TOP */
+.footerTop {
+  max-width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 60px;
+}
+
+.footerHeadingTop {
+  color: var(--text-primary-color);
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.footerTop p {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+/* SUBSCRIBE */
+.subscribeForm {
+  display: flex;
+  align-items: center;
+  background: var(--text-primary-color);
+  border-radius: 10px;
+  padding: 3px 8px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.mailIcon {
+  font-size: 30px;
+  padding: 5px;
+  color: #666;
+}
+
+.inputBox {
+  position: relative;
+  flex: 1;
+}
+
+.subscribeInput {
+  border: none;
+  outline: none;
+  font-size: 18px;
+  padding: 18px 8px 6px;
+  width: 100%;
+  background: transparent;
+}
+
+.floatingLabel {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #999;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.subscribeInput:focus + .floatingLabel,
+.subscribeInput:not(:placeholder-shown) + .floatingLabel {
+  top: 4px;
+  font-size: 12px;
+  color: var(--secondary-color);
+}
+
+.subscribeBtn {
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* FOOTER GRID */
+.footerChild {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 60px;
+}
+
+.cmnFooter {
+  width: 23.33%;
+  padding: 0 20px;
+}
+
+.footer1 {
+  width: 30%;
+}
+
+.footerHeading {
+  color: var(--text-primary-color);
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 550;
+  text-transform: capitalize;
+}
+
+.footerText {
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 70%;
+  line-height: 1.4;
+}
+
+.footerLogo {
+  max-width: 160px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* LINKS */
+.footerLinks li {
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
+}
+
+.footerLinks li:hover {
+  transform: translateX(7px);
+}
+
+.footerLinks li a {
+  color: var(--text-primary-color);
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.footerLinks li a:hover {
+  color: #79b531;
+}
+
+.emailField {
+  text-transform: lowercase;
+}
+
+/* SOCIAL */
+.socialIcons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.socialIcons li {
+  margin-right: 12px;
+}
+
+.socialIcons li a {
+  height: 38px;
+  width: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--text-primary-color);
+  border-radius: 10px;
+  transition: var(--default-animation);
+}
+
+.socialIcons li a:hover {
+  background: #3b5638;
+  color: #fff;
+  border-radius: 50%;
+}
+.socialIcons li i{
+  font-size: 22px;
+
+}
+
+/* BOTTOM */
+.footerEnd {
+  padding: 20px 0;
+  border-top: 1px solid #f3ffe080;
+  text-align: end;
+  color: #f3ffe0;
+}
+
+.brandA {
+  margin: 0 7px;
+  color: #f3ffe0;
+  text-transform: lowercase;
+}
+
+.brandA:hover {
+  color: #a7ec2f;
+}
+
+.reservedText {
+  text-transform: capitalize;
+}
+
+.copyrightIcon {
+  margin: 0 7px;
+}

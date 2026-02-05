@@ -1,0 +1,20 @@
+.bannerSec {
+  background: url("/images/bookmark-page-image/bookmar-banner-image.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 345px;
+  display: flex;
+  align-items: center;
+  /* padding-top: 100px; */
+}
+
+.bannerChild {
+  text-align: center;
+}
+
+.bannerChild p {
+  width: 60%;
+  margin: 0 auto;
+  color: var(--text-primary-color);
+}
