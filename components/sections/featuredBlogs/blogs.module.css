@@ -1,62 +1,105 @@
+/* =======================
+   SECTION
+======================= */
 .featuredBlogSection {
-    padding: 80px 0;
-    position: relative;
+  /* padding: 80px 0 140px; */
+  position: relative;
 }
 
+/* =======================
+   HEADER
+======================= */
 .headerRow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
 }
 
 .sectionTitle {
-    font-size: 42px;
-    font-weight: 600;
+  font-size: 42px;
+  font-weight: 600;
 }
 
+/* =======================
+   NAV BUTTONS
+======================= */
 .navButtons {
-    position: absolute;
-    display: flex;
-    gap: 12px;
-    bottom: 2%;
-    right: 10%;
+  position: absolute;
+  bottom: 85px;
+  right: 10%;
+  display: flex;
+  gap: 12px;
+  z-index: 10;
 }
 
 .navBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: none;
-    background: #d1fccc;
-    cursor: pointer;
-    font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #d1fccc;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
-.navBtn:hover {
-    background: #3b5638;
-    color: #fff;
+/* .navBtn:hover {
+  background: #3b5638;
+  color: #fff;
+} */
+
+.disabled {
+  background: #e0e0e0 !important;
+  color: #999 !important;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
+/* =======================
+   SWIPER CORE FIXES
+======================= */
 .swiper {
-    width: 100%;
+  width: 100%;
+  height: auto;
+  /* padding-bottom: 80px; */
 }
 
+/* IMPORTANT: allow equal-height slides */
+:global(.swiper-wrapper) {
+  align-items: stretch;
+  padding-bottom: 60px;
+}
+
+.swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+/* =======================
+   CARD
+======================= */
 .card {
-    background: #fafafa;
-    border-radius: 15px;
-    padding: 15px;
-    transition: 0.3s;
-    height: 100%;
+  background: #fafafa;
+  border-radius: 15px;
+  padding: 15px;
+  transition: 0.3s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
+/* =======================
+   IMAGE
+======================= */
 .cardImg {
   position: relative;
   border-radius: 15px;
@@ -68,10 +111,9 @@
   width: 100%;
   height: auto;
   display: block;
-  transition: var(--default-animation);
+  transition: transform 0.4s ease;
 }
 
-/* Image overlay */
 .cardImg::after {
   content: "";
   position: absolute;
@@ -89,57 +131,66 @@
   transform: scale(1.1);
 }
 
-
+/* =======================
+   TAG & BOOKMARK
+======================= */
 .tag {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: #d1fccc;
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-size: 14px;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #d1fccc;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 14px;
 }
 
 .bookmark {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: none;
-    /* background: #fff; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 5;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  background: transparent;
 }
 
 .bookmark svg {
-    font-size: 18px;
+  font-size: 18px;
 }
 
+/* =======================
+   META
+======================= */
 .meta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 12px;
 }
 
 .meta span {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .meta span img {
-    width: 16px;
-    height: 16px;
-    object-fit: contain;
-    display: block;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
 }
+
+/* =======================
+   CONTENT
+======================= */
 .cardContent {
   flex: 1;
   display: flex;
@@ -147,25 +198,25 @@
 }
 
 .cardContent h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    font-family: var(--font-poppins), sans-serif;
-    font-weight: 700;   
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 700;
 }
 
 .cardContent p {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 15px;
-    font-family: var(--font-poppins), sans-serif;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 15px;
+  font-family: var(--font-poppins), sans-serif;
 }
 
+/* =======================
+   READ MORE
+======================= */
 .readMore {
-    font-size: 16px;
-    color: #082219;
-    text-decoration: none;
-}
-.swiper-slide {
-  height: auto;
-  display: flex;
+  font-size: 16px;
+  color: #082219;
+  text-decoration: none;
+  margin-top: auto; /* push to bottom */
 }

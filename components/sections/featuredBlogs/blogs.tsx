@@ -42,6 +42,8 @@ const blogs = [
 export default function FeaturedBlogs() {
     const swiperRef = useRef<any>(null);
     const [bookmarked, setBookmarked] = useState<number[]>([]);
+    const [isBeginning, setIsBeginning] = useState(true);
+    const [isEnd, setIsEnd] = useState(false);
 
     const toggleBookmark = (index: number) => {
         setBookmarked((prev) =>
@@ -51,8 +53,13 @@ export default function FeaturedBlogs() {
         );
     };
 
+    const handleSwiperUpdate = (swiper: any) => {
+        setIsBeginning(swiper.isBeginning);
+        setIsEnd(swiper.isEnd);
+    };
+
     return (
-        <section className={styles.featuredBlogSection}>
+        <section className={`${styles.featuredBlogSection} cmn-gap`}>
             <div className="container">
 
                 {/* HEADER */}
@@ -61,16 +68,18 @@ export default function FeaturedBlogs() {
 
                     <div className={styles.navButtons}>
                         <button
-                            className={styles.navBtn}
+                            className={`${styles.navBtn} ${isBeginning ? styles.disabled : ""}`}
                             onClick={() => swiperRef.current?.slidePrev()}
+                            disabled={isBeginning}
                             aria-label="Previous slide"
                         >
                             <FaAngleLeft />
                         </button>
 
                         <button
-                            className={styles.navBtn}
+                            className={`${styles.navBtn} ${isEnd ? styles.disabled : ""}`}
                             onClick={() => swiperRef.current?.slideNext()}
+                            disabled={isEnd}
                             aria-label="Next slide"
                         >
                             <FaAngleRight />
@@ -80,7 +89,12 @@ export default function FeaturedBlogs() {
 
                 {/* SWIPER */}
                 <Swiper
-                    onSwiper={(swiper) => (swiperRef.current = swiper)}
+                    onSwiper={(swiper) => {
+                        swiperRef.current = swiper;
+                        handleSwiperUpdate(swiper)
+                    }}
+                    onSlideChange={handleSwiperUpdate}
+                    onResize={handleSwiperUpdate}
                     slidesPerView={3}
                     spaceBetween={30}
                     breakpoints={{
@@ -163,3 +177,5 @@ export default function FeaturedBlogs() {
         </section>
     );
 }
+
+

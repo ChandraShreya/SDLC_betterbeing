@@ -1,0 +1,85 @@
+/* accordion-starts */
+.headingText {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.faqSection {
+    padding: 60px 0;
+    background: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.faqTitle {
+    font-weight: 600;
+    margin-bottom: 30px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.faqList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faqItem {
+    background: #e0e0e0;
+    border-radius: 12px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.faqLeft {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.faqLeft p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+}
+
+.faqIcon {
+    font-size: 18px;
+    color: #555;
+}
+
+.faqArrow {
+    font-size: 16px;
+    color: #000;
+}
+
+.faqShowAll {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #7cb342;
+}
+
+.faqShowAll:hover {
+    color: #467f09;
+}
+
+.showAllBtn {
+    display: flex;
+    justify-content: end;
+}
+
+.accordionPart {
+    display: flex;
+    gap: 120px;
+    justify-content: space-between;
+}
+
+.leftSec,
+.rightSec {
+    width: 50%;
+}
+
+/* accordion-sec-ends */

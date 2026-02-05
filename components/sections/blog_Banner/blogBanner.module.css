@@ -1,0 +1,35 @@
+
+/* banner-sec-starts */
+.bannerSec {
+    background: url('/images/about-us-page-images/About-us-Banner-Image.png');
+    background-repeat: no-repeat;
+    height: 345px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+}
+
+
+.bannerChild {
+  text-align: center;
+}
+
+.bannerChild h1 {
+  font-size: 48px;
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.bannerChild p {
+  margin: auto;
+  color: var(--text-primary-color);
+  /* color: #fff; */
+  /* font-size: 20px; */
+  /* font-weight: 300; */
+  line-height: 1.6;
+  width: 70%;
+}
+
+/* banner-sec-ends */

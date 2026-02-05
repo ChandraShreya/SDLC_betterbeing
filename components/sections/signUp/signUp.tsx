@@ -3,9 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../signUp/signUp.module.css"
+import { signIn } from "next-auth/react";
 
 
 export default function SignupSection() {
+    const handleGoogleSignup = () => {
+    signIn("google", {
+      callbackUrl: "/", // redirect after login
+    });
+  };
   return (
     <section className={styles.authSection}>
       <div className="container">
@@ -73,7 +79,9 @@ export default function SignupSection() {
                 <div className={styles.divider}>Or continue with</div>
 
                 <div className={styles.socialBtns}>
-                  <button className={styles.google}>
+                  <button type="button" className={styles.google}
+                  onClick={handleGoogleSignup}
+                  >
                     <Image
                       src="/images/signup-page-imgaes/google-icon-logo-svgrepo-com.svg"
                       alt="Google"

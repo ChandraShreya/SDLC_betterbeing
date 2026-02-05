@@ -1,0 +1,47 @@
+/* our expertise sec start */
+.expertiseSec {
+    background-color: var(--text-primary-color);
+}
+
+.expertiseChild {
+    display: flex;
+    margin: 0 -35px;
+}
+
+.expertiseLeft,
+.expertiseRight {
+    width: 50%;
+    padding: 0 35px;
+}
+
+.expertiseLeft p {
+    margin-bottom: 45px;
+    color: rgba(8, 34, 25, 0.5);
+    width: 90%;
+}
+
+.quickSearch img {
+    height: 24px;
+    width: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+.quickSearch {
+    text-transform: capitalize;
+    background-color: #D1FCCC;
+    color: #00000092;
+    border-radius: 8px;
+    padding: 6px 10px;
+    margin-right: 18px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.expertiseVideo img {
+    height: 515px;
+    width: 647px;
+}
+
+/* our expertise sec end */

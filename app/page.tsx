@@ -1,4 +1,5 @@
 import Header from "@/components/layout/header/header";
+import CommunitySection from "@/components/sections/counter/counter";
 import FeaturedBlogs from "@/components/sections/featuredBlogs/blogs";
 import Banner from "@/components/sections/hero/hero";
 import LatestBlogs from "@/components/sections/latestBlogs/latestBlogs";
@@ -13,6 +14,7 @@ export default function Home() {
     <FeaturedBlogs/>
     <OurStory/>
     <LatestBlogs/>
+    <CommunitySection/>
     <ReachOut/>
     </>
     

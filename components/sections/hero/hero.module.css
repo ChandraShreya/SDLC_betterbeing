@@ -12,12 +12,12 @@
     max-width: 90%;
     margin: 0 auto;
     text-align: center;
+    /* padding-top: 50px 0 0 0; */
 }
 
 .bannerContent h1 {
     color: var(--text-dark-color);
 }
-
 
 .bannerContent .titleAnimate {
     font-weight: 600;
@@ -25,8 +25,6 @@
     letter-spacing: 1.2px;
     font-size: 72px;
 }
-
-
 
 .bannerContent .subTitle {
     margin-bottom: 32px;
@@ -48,7 +46,7 @@
 }
 
 .bannerContent .quote {
-    font-style: italic;
+    font-style:var(--font-heading);
     font-size: 24px;
     color: var(--black-color);
 }
@@ -63,25 +61,39 @@
     margin-bottom: 141px;
 }
 
+/* TITLE CHAR ANIMATION */
+.char {
+  display: inline-block;
+}
+
+/* QUOTES */
 .quoteWrapper {
-    text-align: center;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
+  margin-top: 70px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.quoteWrapper.show {
-    opacity: 1;
+.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-#quoteText {
-    font-size: 24px;
-    font-style: italic;
-    margin-bottom: 12px;
-    color: var(--black-color);
-    font-family: 'Times New Roman', Times, serif;
+.quoteText {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 500;
+  margin-bottom: 12px;
 }
 
-#quoteAuthor {
-    font-size: 16px;
-    color: var(--black-color);
+.quoteAuthor {
+    font-family: var(--font-poppins);
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    opacity: 0.75;
+    color: #000;
+    font-weight: 500;
+
 }
+

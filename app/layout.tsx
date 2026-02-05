@@ -1,6 +1,6 @@
 "use client"
 // import type { Metadata } from "next";
-import {  Playfair_Display, Poppins } from "next/font/google";
+import { Playfair_Display, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/header/header";
 import { useEffect } from "react";
@@ -8,6 +8,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Footer from "@/components/layout/footer/footer";
 import "@fortawesome/fontawesome-free/css/all.min.css"
+import Providers from "@/redux/provider/provider";
 
 
 
@@ -30,21 +31,26 @@ export default function RootLayout({
 }>) {
   useEffect(() => {
     AOS.init({
-      duration: 1000,
-      once: true,
-      easing: "ease-in-out",
+      once: true,       // animation runs once
+      duration: 900,
+      easing: "ease-out-cubic",
+      offset: 80,
     });
   }, []);
   return (
     <html lang="en">
       <body
         className={`${poppins.variable} ${playfair.variable} `}
-      > 
-        <Header/>
-        {children}
-        <Footer/>
-        
-        
+      >
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+
+        </Providers>
+
+
+
       </body>
     </html>
   );

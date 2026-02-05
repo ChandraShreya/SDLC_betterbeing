@@ -1,0 +1,24 @@
+.bannerSec{
+    background: url('/images/faq-banner-img/Banner.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bannerChild {
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+.bannerSec h1,
+.bannerSec p {
+    color: white;
+    text-align: center;
+}
+
+.bannerSec p {
+    color: rgba(255, 255, 255, 0.565);
+}

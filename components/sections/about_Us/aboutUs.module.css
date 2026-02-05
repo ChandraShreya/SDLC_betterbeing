@@ -1,0 +1,85 @@
+.aboutSec {
+    background-color: var(--text-primary-color);
+}
+
+.aboutChild {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -25px;
+}
+
+.aboutLeft,
+.aboutRight {
+    width: 50%;
+    padding: 0 25px;
+}
+
+.aboutImg {
+    width: 359px;
+    height: 359px;
+    position: relative;
+    z-index: 2;
+}
+
+.aboutRight {
+    position: relative;
+}
+
+.aboutRight::after {
+    content: "";
+    position: absolute;
+    top: 80px;
+    left: 100px;
+    width: 568px;
+    height: 261px;
+    background:url('/images/about-us-page-images/about-bg-img.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.2;
+    z-index: 4;
+}
+
+.aboutText-1 {
+    margin-bottom: 25px;
+}
+
+.aboutInnerText p{
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.aboutLeft {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.circle.green {
+    width: 220px;
+    height: 220px;
+    background: #CDFDB5;
+    top: -20px;
+    left: 40px;
+}
+
+.circle.yellow {
+    width: 200px;
+    height: 200px;
+    background: #F8C859;
+    bottom: -20px;
+    right: 45px;
+}
+
+.circle.blue {
+    width: 70px;
+    height: 70px;
+    background: #C5F0FF;
+    bottom: 3px;
+    left: 35px;
+}
