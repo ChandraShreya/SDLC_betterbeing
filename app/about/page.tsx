@@ -15,9 +15,6 @@ export default function About() {
         <CommunitySection/>
         <Expertise/>
         <ContactUs/>
-
-
-      
     </>
   )
 }
