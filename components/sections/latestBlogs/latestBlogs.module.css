@@ -42,6 +42,7 @@
   padding: 15px;
   transition: 0.3s;
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .cmnCard:hover {
@@ -147,6 +148,8 @@
   font-weight: 700;
   margin-bottom: 10px;
   transition: var(--default-animation);
+  font-family: var(--font-poppins), sans-serif;
+
 
 }
 
@@ -168,12 +171,78 @@
   font-size: 18px;
   color: rgba(8, 34, 25, 1);
   text-decoration: none;
+  position: relative;
+  margin-top: auto;
 }
 
-.readMore i {
+/* .readMore i {
   transition: var(--default-animation);
-}
+} */
 
-.cmnCard:hover .readMore i {
+/* .cmnCard:hover .readMore i {
+  transform: rotate(-30deg);
+} */
+
+.readMore::before{
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--primary-color);
+    transition: var(--default-animation);
+
+}
+.cmnCard:hover .readMore{
+  color: var(--primary-color);
+}
+.cmnCard:hover .readMore::before{
+  width: 70%;
+}
+.readMore i{
+    font-size: 18px;
+    margin-left: 10px;
+    transition: var(--default-animation);
+}
+.cmnCard:hover .readMore i{
   transform: rotate(-30deg);
 }
+
+/* Header row */
+.latestBlogsTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+/* Toggle button */
+.toggleBtn {
+  background: none;
+  border: none;
+  color: #7cb342; /* green tone */
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.toggleBtn:hover {
+  color: #5a8f2e;
+  /* text-decoration: underline; */
+}
+
+/* Icon inside toggle */
+.toggleBtn svg {
+  font-size: 16px;
+}
+
+/* Optional: keep button aligned right */
+.toggleBtn {
+  margin-left: auto;
+}
+

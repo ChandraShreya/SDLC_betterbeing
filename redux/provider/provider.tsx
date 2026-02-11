@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 // import { Toaster } from "sonner";
 // import { store } from "../store/store";
 import {SessionProvider} from "next-auth/react"
+import { store } from "../store/store";
 
 type ProvidersProps = {
   children: React.ReactNode;
@@ -14,8 +15,9 @@ export default function Providers({ children }: ProvidersProps) {
   return (
     <>
     <SessionProvider>
+      <Provider store={store}>{children}</Provider>
 
-        {children}
+        
 
     </SessionProvider>
     </>
@@ -23,8 +25,3 @@ export default function Providers({ children }: ProvidersProps) {
   )
 }
 
-
-
-//virtual list-react window we use to create virtual list
-//lazy-load
-//infinite scrolling

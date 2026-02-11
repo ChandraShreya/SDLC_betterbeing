@@ -9,6 +9,7 @@
 }
 .blogTitle{
   color: #000;
+  width: 800px;
 
     /* font-family: 'Times New Roman', Times, serif; */
 
@@ -144,6 +145,17 @@
   gap: 30px;
   border-bottom: 1px solid #ddd;
   padding-bottom: 40px;
+}
+.shareIcons i{
+  font-size: 22px;
+}
+.shareIcons a{
+    color: #000;
+    font-size: 16px;
+    transition: all .3s ease;
+}
+.shareIcons a:hover{
+  transform: scale(1.2)
 }
 
 .tagBox {

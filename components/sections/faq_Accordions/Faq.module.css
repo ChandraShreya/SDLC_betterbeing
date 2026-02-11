@@ -81,5 +81,49 @@
 .rightSec {
     width: 50%;
 }
+/* added */
+.activeFaq {
+  background-color: #3B5638;
+ 
+}
+
+.activeFaq p {
+  color: white;
+  
+}
+
+.activeFaq i {
+  color: white;
+}
+
+.rotateArrow {
+  transform: rotate(180deg);
+  transition: 0.3s ease;
+}
+
+/* addes2 */
+
+
+.rotateArrow {
+  transform: rotate(180deg);
+  transition: 0.3s ease;
+}
+
+.answerWrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.answerInner {
+  padding: 10px 35px;
+}
+
+.open {
+  max-height: 500px;
+  opacity: 1;
+}
+
 
 /* accordion-sec-ends */

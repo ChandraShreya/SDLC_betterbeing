@@ -61,13 +61,14 @@ img {
 
 a {
     text-decoration: none;
+    /* background-color: #082219; */
 }
 
 ul li {
     list-style: none;
 }
 
-.cmn-btn {
+.cmnBtn {
     display: inline-block;
     padding: 12px 25px;
     border-radius: 10px;
@@ -81,7 +82,7 @@ ul li {
     overflow: hidden;
 }
 
-.cmn-btn::after {
+.cmnBtn::after {
     position: absolute;
     content: "";
     left: 0;

@@ -57,8 +57,6 @@
 //     )
 // }
 
-
-
 "use client";
 
 import Link from "next/link";
@@ -110,8 +108,31 @@ export default function Header() {
               {/* ✅ IF USER IS LOGGED IN */}
               {session?.user ? (
                 <div className={styles.userBox}>
-                  <button className="cmnBtn">
-                    Hey, {session.user.name?.split(" ")[0]} 
+                  
+                  <button
+                    className="cmn-Btn"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px"
+                    }}
+                  >
+                    {/* Profile Image */}
+                    <Image
+                      src={
+                        session.user.image ||
+                        "/images/home-page-images/user.png"
+                      }
+                      alt="profile"
+                      width={28}
+                      height={28}
+                      style={{
+                        borderRadius: "50%",
+                        objectFit: "cover"
+                      }}
+                    />
+
+                    Hey, {session.user.name?.split(" ")[0]}
                   </button>
 
                   <button
@@ -133,11 +154,12 @@ export default function Header() {
                     />
                   </Link>
 
-                  <Link href="/signUp" className="cmnBtn">
+                  <Link href="/signUp" className="cmn-btn">
                     sign up
                   </Link>
                 </>
               )}
+
             </div>
           </div>
 
@@ -146,4 +168,3 @@ export default function Header() {
     </header>
   );
 }
-
