@@ -1,6 +1,6 @@
 
 .aboutSec {
-    background: url("/images/about-us-page-images/About-us-Banner-Image.png");
+    background: url(../../../public/images/about-us-page-images/About-us-Banner-Image.png);
     background-repeat: no-repeat;
     height: 345px;
     background-position: center;

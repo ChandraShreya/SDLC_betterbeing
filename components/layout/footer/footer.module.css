@@ -196,3 +196,39 @@
 .copyrightIcon {
   margin: 0 7px;
 }
+
+/* ================= FOOTER RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+  .footerTop {
+    max-width: 95%;
+  }
+
+  .footer1 {
+    width: 55%;
+  }
+
+  .cmnFooter {
+    width: 50%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cmnFooter {
+    width: 100%;
+  }
+
+  .footerChild {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .footerEnd {
+    text-align: center;
+  }
+
+  .socialIcons {
+    justify-content: center;
+  }
+}

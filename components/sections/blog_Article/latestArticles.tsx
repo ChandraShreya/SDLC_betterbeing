@@ -82,7 +82,7 @@ export default function BlogListPage() {
             {categories.map((cat) => (
               <li
                 key={cat.id}
-                className={`${styles.filterItem} ${active === cat.name ? "active" : ""
+                className={`${styles.filterItem} ${active === cat.name ? styles.active : ""
                   }`}
                 onClick={() => handleFilter(cat.name)}
               >
@@ -93,7 +93,7 @@ export default function BlogListPage() {
         </div>
 
         {/* BLOG CARDS */}
-        <div className="featured-card-sec">
+        <div className={styles.featuredCardSec}>
           {loading && <p>Loading...</p>}
 
           {!loading && filteredBlogs.length === 0 && (

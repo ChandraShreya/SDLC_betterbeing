@@ -397,11 +397,11 @@
 //     <main className={styles.blogPage}>
 //       <div className="container">
 //         <div className={styles.blogWrapper}>
-          
+
 //           {/* LEFT CONTENT */}
 //           <div className={styles.blogLeft}>
 //             <div className={styles.blogContentMain}>
-              
+
 //               <h1 className={styles.blogTitle}>{blog.title}</h1>
 //               <p className={styles.blogSubtitle}>{blog.description}</p>
 
@@ -659,12 +659,24 @@ export default function BlogDetails() {
               </div>
             </div>
 
-            {/* TAGS */}
+            {/* CATEGORIES */}
             <div className={styles.tagBox}>
-              {(blog.tags || []).map((tag, i) => (
-                <span key={i}>{tag}</span>
+              {[
+                "Nutrition",
+                "Fitness",
+                "Mental Wellness",
+                "Preventive Care",
+                "Sleep Health",
+                "Extended Care",
+                "Mental Wellness",
+                "Preventive Care",
+                "Sleep Health",
+              ].map((category, index) => (
+                <span key={index}>{category}</span>
               ))}
             </div>
+
+
 
             {/* RELATED BLOGS */}
             <div className={styles.relatedBlogs}>

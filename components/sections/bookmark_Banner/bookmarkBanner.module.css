@@ -1,9 +1,9 @@
 .bannerSec {
-  background: url("/images/bookmark-page-image/bookmar-banner-image.jpg");
+  background: url("/images/bookmark-page-image/Bookmark-banner-image.png");
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   height: 345px;
+  background-position: cover;
+  background-size: cover;
   display: flex;
   align-items: center;
   /* padding-top: 100px; */

@@ -16,6 +16,18 @@
 }
 
 
+/* .tagBox {
+  margin-top: 16px;
+}
+
+.tagBox span {
+  display: inline-block;
+  background: #f1f1f1;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin: 10px 10px 0 0;
+} */
+
 /* LEFT */
 .blogLeft {
   width: 70%;
@@ -73,6 +85,10 @@
   border-radius: 18px;
   overflow: hidden;
   margin-bottom: 30px;
+}
+.blogImage img{
+  height: 450px;
+  width: 1036px;
 }
 
 .blogContent p {
@@ -181,13 +197,20 @@
   gap: 10px;
   margin-bottom: 40px;
 }
-
+.relatedItem img{
+  width: 138px;
+  height: 111px;
+}
 .relatedItem p {
   font-size: 18px;
   font-weight: 600;
+  max-width: 304px;
 }
 
 .smallCalendar {
   font-size: 14px;
   color: #777;
+}
+.blogContent h2{
+  color: #2ecc71;
 }

@@ -49,13 +49,14 @@
     color: var(--black-color);
 }
 
-.nav-links li a.active-page-select {
+.navLinks li a.active {
     color: var(--black-color);
 }
 
-.navLinks li a.active-page-select::before {
+.navLinks li a.active::before {
     width: 100%;
 }
+
 
 .navLinks li {
     margin-right: 36px;
@@ -108,3 +109,80 @@
     /* default animation speed */
     --default-animation: all .3s ease;
 }
+
+
+/* ================= HEADER RESPONSIVE ================= */
+
+/* ================= HEADER RESPONSIVE ================= */
+
+@media (max-width: 1200px) {
+  .navLinks li {
+    margin-right: 20px;
+  }
+
+  .navLogo {
+    width: 130px;
+  }
+
+  .userSignup img,
+  .searchIcon img {
+    margin-right: 24px;
+  }
+
+  .cmnBtn {
+    padding: 10px 22px;
+  }
+}
+
+@media (max-width: 992px) {
+  .navLinks {
+    display: none;
+  }
+
+  .navRight {
+    display: flex;
+    align-items: center;
+  }
+
+  .menuBar i {
+    font-size: 32px;
+  }
+
+  .menuBar {
+    display: block;
+  }
+
+  .navLinks {
+    display: inline-block;
+    position: fixed;
+    top: 87px;
+    background-color: var(--nav-bar-bg-color);
+    width: 60%;
+    text-align: center;
+    right: 0;
+    transform: translateX(100%);
+    padding-block: 15px;
+    height: calc(100vh - 87px);
+    transition: all .3s ease;
+    z-index: 1000;
+  }
+
+  .navLinks li {
+    margin-bottom: 20px;
+  }
+
+  .navLinks.active {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .cmnBtn {
+    padding: 8px 16px;
+  }
+
+  .searchIcon {
+    display: none;
+  }
+}
+

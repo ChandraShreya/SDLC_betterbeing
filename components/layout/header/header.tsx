@@ -1,61 +1,4 @@
 
-// import Link from "next/link"
-// import styles from "../header/header.module.css"
-
-
-
-// export default function Header() {
-//     return (
-//         <header className={styles.header}>
-//             <div className="container">
-//                 <nav className={styles.navbar}>
-//                     <Link href="./index.html" className={styles.navLogo}>
-//                         <img
-//               src="/images/LOGO For Nav Bar.svg"
-//               alt="main-logo"
-//             />
-//                     </Link>
-//                     <ul className={styles.navLinks}>
-//                         <li>
-//                             <Link href="/" className={styles.active}>
-//                                 home
-//                             </Link>
-//                         </li>
-//                         <li>
-//                             <Link href="/about">about us</Link>
-//                         </li>
-//                         <li>
-//                             <Link href="/blog">blog list</Link>
-//                         </li>
-//                         <li>
-//                             <Link href="/bookmark">bookmarks</Link>
-//                         </li>
-//                         <li>
-//                             <Link href="/faq">FAQs</Link>
-//                         </li>
-//                         <li>
-//                             <Link href="/contactInfo">contact us</Link>
-//                         </li>
-//                     </ul>
-//                     <div className={styles.navRight}>
-//                         <div className={styles.navRightIcon}>
-//                             <Link href="#" className={styles.searchIcon}>
-//                                 <img src="./images/home-page-images/search.png" alt="search" />
-//                             </Link>
-//                             <Link href="./login.html" className={styles.userSignup}>
-//                                 <img src="./images/home-page-images/user.png" alt="signup" />
-//                             </Link>
-//                             <Link href="/signUp" className="cmnBtn">
-//                                 sign up
-//                             </Link>
-//                         </div>
-                        
-//                     </div>
-//                 </nav>
-//             </div>
-//         </header>
-//     )
-// }
 
 "use client";
 
@@ -63,9 +6,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
 import styles from "../header/header.module.css";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const { data: session } = useSession();
+  const pathname = usePathname();
 
   return (
     <header className={styles.header}>
@@ -84,12 +29,48 @@ export default function Header() {
 
           {/* NAV LINKS */}
           <ul className={styles.navLinks}>
-            <li><Link href="/">home</Link></li>
-            <li><Link href="/about">about us</Link></li>
-            <li><Link href="/blog">blog list</Link></li>
-            <li><Link href="/bookmark">bookmarks</Link></li>
-            <li><Link href="/faq">FAQs</Link></li>
-            <li><Link href="/contactInfo">contact us</Link></li>
+            <li><Link
+              href="/"
+              className={pathname === "/" ? styles.active : ""}
+            >
+              home
+            </Link></li>
+            <li><Link
+              href="/about"
+              className={pathname === "/about" ? styles.active : ""}
+            >
+              about us
+            </Link>
+            </li>
+            <li><Link
+              href="/blog"
+              className={pathname === "/blog" ? styles.active : ""}
+            >
+              blog list
+            </Link>
+            </li>
+
+            <li><Link
+              href="/bookmark"
+              className={pathname === "/bookmark" ? styles.active : ""}
+            >
+              bookmarks
+            </Link>
+            </li>
+            <li><Link
+              href="/faq"
+              className={pathname === "/faq" ? styles.active : ""}
+            >
+              FAQs
+            </Link>
+            </li>
+            <li><Link
+              href="/contactInfo"
+              className={pathname === "/contactInfo" ? styles.active : ""}
+            >
+              contact us
+            </Link>
+            </li>
           </ul>
 
           {/* RIGHT SIDE */}
@@ -108,7 +89,7 @@ export default function Header() {
               {/* ✅ IF USER IS LOGGED IN */}
               {session?.user ? (
                 <div className={styles.userBox}>
-                  
+
                   <button
                     className="cmn-Btn"
                     style={{
@@ -154,7 +135,7 @@ export default function Header() {
                     />
                   </Link>
 
-                  <Link href="/signUp" className="cmn-btn">
+                  <Link href="/signUp" className="cmnBtn">
                     sign up
                   </Link>
                 </>

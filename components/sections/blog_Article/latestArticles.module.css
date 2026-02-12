@@ -29,24 +29,21 @@
   list-style: none;
   padding: 0;
 }
-.blogFilter ul li{
+/* .blogFilter ul li{
   padding: 8px 16px;
   border-radius: 5px;
   border: 1px solid #ddd;
   margin-right: 10px;
-  /* margin-bottom: 10px; */
+  margin-bottom: 10px;
   font-size: 16px;
   cursor: pointer;
   background: #E8E8E8;
   transition: all 0.8s ease;
-}
-.blogFilter ul li:hover{
+} */
+/* .blogFilter ul li:hover{
   background: #cfcfcf;
-}
- .active{
-  background: #082219;
-  color: #fff;
-}
+} */
+
 .filterItem {
   padding: 8px 16px;
   border-radius: 5px;
@@ -58,13 +55,14 @@
   transition: all 0.3s ease;
 }
 
-.filterItem:hover {
+/* .filterItem:hover {
   background: #cfcfcf;
-}
+} */
 
 .active {
   background: #082219;
-  color: #fff;
+  color: #ffffff;
+  border-color: #082219;
 }
 
 .featuredCardSec {
@@ -185,7 +183,16 @@
   text-decoration: none;
   position: relative;
 }
-
+.featuredCardSec{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.featuredCardSec p{
+  /* text-align: center;
+  font-size: 25px;
+  font-weight: 600; */
+}
 /* .readMore i {
   transition: var(--default-animation);
 } */

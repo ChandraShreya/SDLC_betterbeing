@@ -1,5 +1,5 @@
 .bannerSection {
-  height: 100vh;
+  height: 80vh;
   position: relative;
 }
 
@@ -30,7 +30,7 @@
   position: relative;
   z-index: 2;
   color: #fff;
-  padding: 120px 0;
+  padding: 180px 0;
 }
 
 /* Title */
@@ -47,13 +47,13 @@
 
 /* Button */
 .bannerBtn {
-  margin-bottom: 141px;
+  margin-bottom: 100px;
 }
 
 /* Quote */
 .quoteWrapper {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 10px;
   font-style: italic;
   opacity: 0.85;
   transition: opacity 1s ease-in-out;
@@ -70,3 +70,39 @@
   font-size: 16px;
   color: var(--text-primary-color);
 }
+
+
+
+
+
+/* ================= BANNER RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+  .bannerBtn {
+    margin-bottom: 100px;
+  }
+
+  /* h1,
+  .heading1 {
+    font-size: 60px;
+  } */
+}
+
+@media (max-width: 768px) {
+  .bannerBtn {
+    margin-bottom: 70px;
+  }
+
+  /* h1,
+  .heading1 {
+    font-size: 40px;
+  } */
+
+  /* h3,
+  .heading3 {
+    font-size: 24px;
+  } */
+}
+
+
+

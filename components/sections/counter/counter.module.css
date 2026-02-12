@@ -77,3 +77,55 @@
   font-weight: 600;
   font-family: "Times New Roman", Times, serif;
 }
+
+
+/* ================= COMMUNITY RESPONSIVE ================= */
+
+@media (max-width: 1200px) {
+  .communityImg img {
+    height: 403px;
+    width: 432px;
+    position: absolute;
+    bottom: 4px;
+    left: 49px;
+  }
+}
+
+@media (max-width: 992px) {
+  .communityImg img {
+    height: 317px;
+    width: 341px;
+    bottom: 6px;
+    left: 34px;
+  }
+
+  .communityInnerText {
+    padding: 26px 33px 24px 0;
+  }
+
+  .count,
+  .plus {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .communityLeft,
+  .communityRight {
+    width: 100%;
+  }
+
+  .communityLeft {
+    order: 2;
+  }
+
+  .communityChild {
+    height: 736px;
+  }
+
+  .communityImg img {
+    height: 298px;
+    width: 310px;
+    left: 44px;
+  }
+}

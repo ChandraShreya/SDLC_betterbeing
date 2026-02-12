@@ -3,6 +3,7 @@
 import Image from "next/image";
 // import styles from "./wellnessSection.module.css";
 import styles from "../bookmarkWellness/wellness.module.css"
+import Link from "next/link";
 
 export default function WellnessSection() {
   return (
@@ -96,9 +97,13 @@ export default function WellnessSection() {
                     and promotes natural healing effectively.
                   </p>
 
-                  <a href="#" className={styles.learnMore}>
-                    Learn More <i className="fa-solid fa-arrow-right"></i>
-                  </a>
+                  <Link
+                    href={"/blog"}
+                    className={styles.readMore}
+                  >
+                    Learn More
+                    <i className="fa-solid fa-arrow-right"></i>
+                  </Link>
                 </div>
               </div>
             ))}

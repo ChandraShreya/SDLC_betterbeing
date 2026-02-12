@@ -85,3 +85,40 @@
   width: 221px;
   height: 221px;
 }
+
+/* ================= STORY RESPONSIVE ================= */
+
+@media (max-width: 1400px) {
+  .overlayImg {
+    right: 12px;
+    bottom: 67px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .overlayImg {
+    right: 12px;
+    bottom: 221px;
+  }
+
+  .profileImg {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+@media (max-width: 992px) {
+  .storyLeft,
+  .storyRight {
+    width: 100%;
+  }
+
+  .storyLeft {
+    margin-bottom: 20px;
+  }
+
+  .overlayImg {
+    right: 12px;
+    bottom: -78px;
+  }
+}

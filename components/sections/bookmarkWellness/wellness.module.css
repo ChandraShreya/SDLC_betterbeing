@@ -138,21 +138,26 @@
 
 .cardContent h3 {
   font-size: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 700;
+}
+.cardContent h3:hover{
+  color: var(--primary-color);
 }
 
 .cardContent p {
   font-size: 16px;
   color: #555;
-  margin-bottom: 20px;
+  margin-bottom: 70px;
+  font-family: var(--font-poppins), sans-serif;
 }
 
-.learnMore {
-  display: inline-flex;
+.readMore {
   font-size: 18px;
-  color: #000;
-  position: relative;
+  color: #082219;
   text-decoration: none;
+  margin-top: auto; /* push to bottom */
 }
 .learnMore i {
   position: absolute;
@@ -160,7 +165,7 @@
   right: -30px;
 }
 
-.learnMore::before {
+.readMore::before {
   content: "";
   position: absolute;
   bottom: -2px;

@@ -165,7 +165,7 @@
   color: var(--primary-color);
 }
 .card:hover .readMore::before{
-  width: 30%;
+  width: 22%;
 }
 .readMore i{
     font-size: 18px;
@@ -264,7 +264,7 @@
    READ MORE
 ======================= */
 .readMore {
-  font-size: 16px;
+  font-size: 18px;
   color: #082219;
   text-decoration: none;
   margin-top: auto; /* push to bottom */
