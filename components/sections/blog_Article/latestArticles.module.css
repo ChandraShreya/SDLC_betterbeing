@@ -183,11 +183,11 @@
   text-decoration: none;
   position: relative;
 }
-.featuredCardSec{
+/* .featuredCardSec{
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 .featuredCardSec p{
   /* text-align: center;
   font-size: 25px;
