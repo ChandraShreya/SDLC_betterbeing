@@ -187,6 +187,11 @@ const FaqAccordions: React.FC = () => {
     answer:
       "Stress can be managed through breathing exercises, meditation, yoga, nature walks, journaling, and reducing screen time. Staying active, maintaining social connections, and practicing gratitude also improve mental well-being.",
   },
+    {
+    question: "What is mindful eating and why is it important?",
+    answer:
+      "Mindful eating means paying attention to your food and hunger cues. It helps prevent overeating, improves digestion, and builds a healthier relationship with food.",
+  },
 ];
 
 
@@ -231,11 +236,7 @@ const FaqAccordions: React.FC = () => {
     answer:
       "Sugar cravings often happen when blood sugar drops. Eat balanced meals with protein and fiber, stay hydrated, sleep well, and manage stress. Try fruits, nuts, or dark chocolate instead of processed sweets.",
   },
-  {
-    question: "What is mindful eating and why is it important?",
-    answer:
-      "Mindful eating means paying attention to your food and hunger cues. It helps prevent overeating, improves digestion, and builds a healthier relationship with food.",
-  },
+
 ];
 
 
@@ -338,11 +339,11 @@ return (
               })}
             </div>
 
-            <div className={Style.showAllBtn}>
+            {/* <div className={Style.showAllBtn}>
               <a href="#" className={Style.faqShowAll}>
                 Show all →
               </a>
-            </div>
+            </div> */}
           </div>
 
         </div>

@@ -197,6 +197,17 @@
   margin: 0 7px;
 }
 
+.subscribeBtn:active {
+  transform: scale(0.98);
+}
+
+.subscribeBtn:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  opacity: 0.8;
+}
 /* ================= FOOTER RESPONSIVE ================= */
 
 @media (max-width: 992px) {

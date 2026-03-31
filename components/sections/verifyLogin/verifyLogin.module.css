@@ -1,0 +1,140 @@
+
+/* OTP VERIFICATION SECTION */
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%);
+  padding: 20px;
+}
+
+.glassCard {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 50px 40px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.glassCard h3 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #0c2a1f;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+
+.emailText {
+  text-align: center;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 30px;
+}
+
+/* OTP INPUTS */
+.otpInputs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.otpInput {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #d8f2e3;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #0c2a1f;
+  transition: all 0.3s ease;
+  background: #f9f9f9;
+  font-family: "Poppins", sans-serif;
+}
+
+.otpInput:focus {
+  outline: none;
+  border-color: #2f8f6a;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(47, 139, 106, 0.1);
+}
+
+.otpInput:hover {
+  border-color: #2f8f6a;
+}
+
+/* VERIFY BUTTON */
+.verifyBtn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(90deg, #2f8f6a, #0c2a1f);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.verifyBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(47, 139, 106, 0.3);
+}
+
+.verifyBtn:active {
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .glassCard {
+    padding: 40px 25px;
+    max-width: 100%;
+  }
+
+  .glassCard h3 {
+    font-size: 24px;
+  }
+
+  .otpInput {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+
+  .otpInputs {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .glassCard {
+    padding: 30px 20px;
+  }
+
+  .glassCard h3 {
+    font-size: 20px;
+  }
+
+  .otpInput {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .otpInputs {
+    gap: 6px;
+  }
+
+  .emailText {
+    font-size: 12px;
+  }
+}

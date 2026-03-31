@@ -153,42 +153,43 @@
   font-family: var(--font-poppins), sans-serif;
 }
 
-.readMore {
-  font-size: 18px;
-  color: #082219;
-  text-decoration: none;
-  margin-top: auto; /* push to bottom */
-}
-.learnMore i {
-  position: absolute;
-  top: 5px;
-  right: -30px;
-}
-
-.readMore::before {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--primary-color);
-  transition: var(--default-animation);
-}
-
-.cmn-card:hover .learnMore::before {
-  width: 80%;
-}
-
-.learnMore i {
-  margin-left: 10px;
-  transition: var(--default-animation);
-}
-
-.cmn-card:hover .learnMore i {
-  transform: rotate(-30deg);
-}
 
 .filterClose {
   display: none;
+}
+.readMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 18px;
+  color: rgba(8, 34, 25, 1);
+  text-decoration: none;
+  position: relative;
+  margin-top: auto;
+}
+
+.readMore::before{
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--primary-color);
+    transition: var(--default-animation);
+
+}
+.wellnessCards:hover .readMore{
+  color: var(--primary-color);
+}
+.wellnessCards:hover .readMore::before{
+  width: 70%;
+}
+.readMore i{
+    font-size: 18px;
+    margin-left: 10px;
+    transition: var(--default-animation);
+}
+.wellnessCards:hover .readMore i{
+  transform: rotate(-30deg);
 }

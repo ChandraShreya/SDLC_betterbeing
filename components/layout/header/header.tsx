@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import Link from "next/link";
@@ -7,10 +5,39 @@ import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
 import styles from "../header/header.module.css";
 import { usePathname } from "next/navigation";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "@/redux/slice/authSlice";
+import { Router } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
-  const { data: session } = useSession();
+  const { data: session } = useSession(); // Google login
+  const { isloggedIn, email } = useSelector((state: any) => state.auth); // Normal login
+  const dispatch = useDispatch();
   const pathname = usePathname();
+  const router = useRouter();
+
+  const isGoogleUser = !!session?.user;
+  const isNormalUser = isloggedIn;
+
+  // Decide name
+  const userName =
+    session?.user?.name ||
+    email?.split("@")[0] ||
+    "";
+
+  // Decide image
+  const userImage =
+    session?.user?.image ||
+    "/images/home-page-images/user.png";
+
+  const handleLogout = () => {
+    if (isGoogleUser) {
+      signOut({ callbackUrl: "/" });
+    } else {
+      dispatch(logout());
+    }
+  };
 
   return (
     <header className={styles.header}>
@@ -27,49 +54,60 @@ export default function Header() {
             />
           </Link>
 
-          {/* NAV LINKS */}
+          {/* NAV LINKS (UNCHANGED) */}
           <ul className={styles.navLinks}>
-            <li><Link
-              href="/"
-              className={pathname === "/" ? styles.active : ""}
-            >
-              home
-            </Link></li>
-            <li><Link
-              href="/about"
-              className={pathname === "/about" ? styles.active : ""}
-            >
-              about us
-            </Link>
-            </li>
-            <li><Link
-              href="/blog"
-              className={pathname === "/blog" ? styles.active : ""}
-            >
-              blog list
-            </Link>
+            <li>
+              <Link
+                href="/"
+                className={pathname === "/" ? styles.active : ""}
+              >
+                home
+              </Link>
             </li>
 
-            <li><Link
-              href="/bookmark"
-              className={pathname === "/bookmark" ? styles.active : ""}
-            >
-              bookmarks
-            </Link>
+            <li>
+              <Link
+                href="/about"
+                className={pathname === "/about" ? styles.active : ""}
+              >
+                about us
+              </Link>
             </li>
-            <li><Link
-              href="/faq"
-              className={pathname === "/faq" ? styles.active : ""}
-            >
-              FAQs
-            </Link>
+
+            <li>
+              <Link
+                href="/blog"
+                className={pathname === "/blog" ? styles.active : ""}
+              >
+                blog list
+              </Link>
             </li>
-            <li><Link
-              href="/contactInfo"
-              className={pathname === "/contactInfo" ? styles.active : ""}
-            >
-              contact us
-            </Link>
+
+            <li>
+              <Link
+                href="/bookmark"
+                className={pathname === "/bookmark" ? styles.active : ""}
+              >
+                bookmarks
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                href="/faq"
+                className={pathname === "/faq" ? styles.active : ""}
+              >
+                FAQs
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                href="/contactInfo"
+                className={pathname === "/contactInfo" ? styles.active : ""}
+              >
+                contact us
+              </Link>
             </li>
           </ul>
 
@@ -86,11 +124,12 @@ export default function Header() {
                 />
               </Link>
 
-              {/* ✅ IF USER IS LOGGED IN */}
-              {session?.user ? (
+              {/* IF LOGGED IN (Google OR Normal) */}
+              {(isGoogleUser || isNormalUser) ? (
                 <div className={styles.userBox}>
 
                   <button
+                  onClick={()=>router.push("/userProfile")}
                     className="cmn-Btn"
                     style={{
                       display: "flex",
@@ -98,12 +137,8 @@ export default function Header() {
                       gap: "8px"
                     }}
                   >
-                    {/* Profile Image */}
                     <Image
-                      src={
-                        session.user.image ||
-                        "/images/home-page-images/user.png"
-                      }
+                      src={userImage}
                       alt="profile"
                       width={28}
                       height={28}
@@ -113,20 +148,21 @@ export default function Header() {
                       }}
                     />
 
-                    Hey, {session.user.name?.split(" ")[0]}
+                    Hey, {userName}
                   </button>
 
                   <button
-                    onClick={() => signOut({ callbackUrl: "/" })}
+                    onClick={handleLogout}
                     className={styles.logoutBtn}
                   >
                     Logout
                   </button>
+
                 </div>
               ) : (
-                /* ❌ IF USER NOT LOGGED IN */
+                /* NOT LOGGED IN */
                 <>
-                  <Link href="/login" className={styles.userSignup}>
+                  <Link href="/signIn" className={styles.userSignup}>
                     <Image
                       src="/images/home-page-images/user.png"
                       alt="login"

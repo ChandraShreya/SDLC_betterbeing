@@ -60,6 +60,47 @@
   margin-bottom: 20px;
 }
 
+.authTop {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.authTop h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* IMAGE UPLOAD */
+.imageUpload {
+  flex-shrink: 0;
+}
+
+.uploadCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #d8f2e3;
+  border: 2px dashed #2f8f6a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.uploadCircle:hover {
+  background: #c6e9d7;
+}
+
 /* FLOATING INPUT */
 .inputBoxSignup {
   position: relative;
@@ -93,6 +134,14 @@
   top: -1px;
   font-size: 13px;
   color: #0c2a1f;
+}
+
+/* ERROR MESSAGE */
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
 }
 
 /* CHECKBOX */
@@ -155,11 +204,12 @@
 /* SOCIAL */
 .socialBtns {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 
 .socialBtns button {
-  width: calc(50% - 14px);
+  width: 100%;
   padding: 5px;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -194,4 +244,37 @@
 
 .loginText:hover {
   color: #000;
+}
+
+
+.authTop{
+  display: flex;
+}
+
+/* preview inside circle */
+.uploadCircle img,
+.circleImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* previous standalone preview (no longer used) */
+.imagePreview {
+  display: none;
+}
+.eyeIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #999;
+}
+.loginText {
+  color: #1f6b4f;
+  font-weight: 500;
+  text-decoration: none;
+
 }

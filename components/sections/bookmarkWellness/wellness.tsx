@@ -1,14 +1,50 @@
 "use client";
 
 import Image from "next/image";
-// import styles from "./wellnessSection.module.css";
-import styles from "../bookmarkWellness/wellness.module.css"
+import styles from "../bookmarkWellness/wellness.module.css";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getBookmarks } from "@/redux/slice/bookmarkSlice";
 
 export default function WellnessSection() {
+  const dispatch = useDispatch();
+
+  const { bookmarks, loading } = useSelector(
+    (state: any) => state.bookmark
+  );
+
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [filteredBookmarks, setFilteredBookmarks] = useState<any[]>([]);
+
+  // Fetch bookmarks
+  useEffect(() => {
+    dispatch(getBookmarks());
+  }, [dispatch]);
+
+  // Generate categories dynamically
+  const categories = [
+    "All",
+    ...new Set(bookmarks?.map((b: any) => b.category_name)),
+  ];
+
+  // Filter logic
+  useEffect(() => {
+    if (activeCategory === "All") {
+      setFilteredBookmarks(bookmarks);
+    } else {
+      setFilteredBookmarks(
+        bookmarks.filter(
+          (blog: any) => blog.category_name === activeCategory
+        )
+      );
+    }
+  }, [bookmarks, activeCategory]);
+
   return (
     <section className={`${styles.wellnessSection} cmn-gap`}>
       <div className="container">
+
         {/* TOP BAR */}
         <div className={styles.wellnessSectionUpper}>
           <button className={styles.filterToggle}>
@@ -18,20 +54,22 @@ export default function WellnessSection() {
         </div>
 
         <div className={styles.mainWellness}>
+
           {/* LEFT FILTER */}
           <div className={styles.wellnessLeftPart}>
             <span className={styles.filterClose}>&times;</span>
             <h4>Choose Category</h4>
 
-            <label><input type="checkbox" defaultChecked /> All</label>
-            <label><input type="checkbox" /> Nutrition</label>
-            <label><input type="checkbox" /> Fitness</label>
-            <label><input type="checkbox" /> Mental Wellness</label>
-            <label><input type="checkbox" /> Preventive Care</label>
-            <label><input type="checkbox" /> Alternative Therapy</label>
-            <label><input type="checkbox" /> Sleep Health</label>
-            <label><input type="checkbox" /> Personal Wellness</label>
-            <label><input type="checkbox" /> Extended Care</label>
+            {categories.map((cat) => (
+              <label key={cat}>
+                <input
+                  type="radio"
+                  checked={activeCategory === cat}
+                  onChange={() => setActiveCategory(cat)}
+                />
+                {cat}
+              </label>
+            ))}
 
             <button className={`cmnBtn ${styles.btnApply}`}>
               apply now
@@ -41,72 +79,74 @@ export default function WellnessSection() {
           {/* RIGHT CARDS */}
           <div className={styles.wellnessRightPart}>
 
-            {/* CARD */}
-            {[
-              "wellness-card-1.jpg",
-              "wellness-card-2.jpg",
-              "wellness-card-3.jpg",
-              "wellness-card-4.png",
-              "wellness-card-5.png",
-            ].map((img, i) => (
-              <div key={i} className={`${styles.wellnessCards} cmn-card`}>
-                <div className={styles.cardImage}>
-                  <div className={styles.cardImgDiv}>
-                    <Image
-                      src={`/images/bookmark-page-image/${img}`}
-                      alt="wellness card"
-                      width={400}
-                      height={250}
-                    />
-                  </div>
+            {loading && <p>Loading...</p>}
 
-                  <span className={styles.tag}>Nutrition</span>
-                  <span className={styles.bookmark}>
-                    <i className="fa-regular fa-bookmark"></i>
-                  </span>
-                </div>
+            {!loading && filteredBookmarks.length === 0 && (
+              <p>No bookmarks found</p>
+            )}
 
-                <div className={styles.cardContent}>
-                  <div className={styles.content}>
-                    <span>
-                      <Image
-                        src="/images/bookmark-page-image/calendar.png"
-                        alt="calendar"
-                        width={18}
-                        height={18}
+            {!loading &&
+              filteredBookmarks.map((blog: any) => (
+                <div
+                  key={blog.id}
+                  className={`${styles.wellnessCards} cmn-card`}
+                >
+                  <div className={styles.cardImage}>
+                    <div className={styles.cardImgDiv}>
+                      <img
+                        src={`http://127.0.0.1:8000${blog.cover_image}`}
+                        alt={blog.title}
+                        width={400}
+                        height={250}
                       />
-                      Dec 12, 2025
+                    </div>
+
+                    <span className={styles.tag}>
+                      {blog.category_name}
                     </span>
-                    <span>
-                      <Image
-                        src="/images/bookmark-page-image/chat.png"
-                        alt="chat"
-                        width={18}
-                        height={18}
-                      />
-                      0
+
+                    <span className={styles.bookmark}>
+                      <i className="fa-solid fa-bookmark"></i>
                     </span>
                   </div>
 
-                  <h3>
-                    Acupuncture: Benefits, What to Expect & How It Works
-                  </h3>
+                  <div className={styles.cardContent}>
+                    <div className={styles.content}>
+                      <span>
+                        <Image
+                          src="/images/bookmark-page-image/calendar.png"
+                          alt="calendar"
+                          width={18}
+                          height={18}
+                        />
+                        {blog.created_at?.split("T")[0]}
+                      </span>
 
-                  <p>
-                    Acupuncture relieves pain, reduces stress, balances energy,
-                    and promotes natural healing effectively.
-                  </p>
+                      <span>
+                        <Image
+                          src="/images/bookmark-page-image/chat.png"
+                          alt="chat"
+                          width={18}
+                          height={18}
+                        />
+                        0
+                      </span>
+                    </div>
 
-                  <Link
-                    href={"/blog"}
-                    className={styles.readMore}
-                  >
-                    Learn More
-                    <i className="fa-solid fa-arrow-right"></i>
-                  </Link>
+                    <h3>{blog.title}</h3>
+
+                    <p>{blog.description}</p>
+
+                    <Link
+                      href={`/blog/${blog.id}`}
+                      className={styles.readMore}
+                    >
+                      Learn More
+                      <i className="fa-solid fa-arrow-right"></i>
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
 
           </div>
         </div>

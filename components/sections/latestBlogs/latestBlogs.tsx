@@ -7,12 +7,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getLatestBlogs } from "@/redux/slice/blogSlice";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
+import { toast } from "sonner";
+import { addBookmark, removeBookmark } from "@/redux/slice/bookmarkSlice";
 
 
 
 export default function LatestBlogs() {
     const [bookmarked, setBookmarked] = useState<number[]>([]);
     const [showAll, setShowAll] = useState(false)
+    const { token } = useSelector((state: any) => state.auth);
     const dispatch = useDispatch()
 
     const latestBlogs = useSelector((state) => state.blogs.latestBlogs) || []
@@ -28,12 +31,37 @@ export default function LatestBlogs() {
 
 
 
-    const toggleBookmark = (index: number) => {
-        setBookmarked((prev) =>
-            prev.includes(index)
-                ? prev.filter((i) => i !== index)
-                : [...prev, index]
-        );
+    const toggleBookmark = async (blogId: number) => {
+        if (!token) {
+            toast.error("Please login to bookmark");
+            return;
+        }
+
+
+
+        try {
+            if (bookmarked.includes(blogId)) {
+                // REMOVE
+                await dispatch(removeBookmark(blogId)).unwrap();
+
+                setBookmarked((prev) =>
+                    prev.filter((id) => id !== blogId)
+                );
+
+                toast.success("Bookmark removed");
+            } else {
+                // ADD
+                await dispatch(addBookmark(blogId)).unwrap();
+
+                setBookmarked((prev) => [...prev, blogId]);
+
+                toast.success("Bookmark added");
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error("Something went wrong");
+        }
+
     };
     return (
         <section className={`${styles.latestBlogSec} cmn-gap`}>
@@ -78,10 +106,10 @@ export default function LatestBlogs() {
                                         className={styles.bookmark}
                                         onClick={(e) => {
                                             e.stopPropagation();
-                                            toggleBookmark(index);
+                                            toggleBookmark(blog.id);
                                         }}
                                     >
-                                        {bookmarked.includes(index) ? (
+                                        {bookmarked.includes(blog.id) ? (
                                             <FaBookmark />
                                         ) : (
                                             <FaRegBookmark />
@@ -119,7 +147,7 @@ export default function LatestBlogs() {
                                         href={`/blog/${blog.id}`}
                                         className={styles.readMore}
                                     >
-                                        Learn More 
+                                        Learn More
                                         <i className="fa-solid fa-arrow-right"></i>
                                     </Link>
                                 </div>

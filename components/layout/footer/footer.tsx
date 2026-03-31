@@ -1,9 +1,56 @@
 "use client";
 
 import Image from "next/image";
-import styles from "./footer.module.css";
+import styles from "../footer/footer.module.css";
+import { toast } from "sonner";
+import AxiosInstance from "@/api/axios/axios";
+import { endpoints } from "@/api/endPoints/endpoints";
+import { useState } from "react";
 
 export default function Footer() {
+    const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email) {
+      toast.error("Please enter your email");
+      return;
+    }
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const response = await AxiosInstance.post(
+        endpoints.newsLetter.subscribe,
+        { email }
+      );
+
+      toast.success(
+        response?.data?.message || "Subscribed successfully!"
+      );
+
+      setEmail("");
+    } catch (error: any) {
+      const message =
+        error?.response?.data?.message ||
+        error?.response?.data?.error ||
+        "Something went wrong";
+
+      toast.error(message);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <footer className={styles.footerSec}>
       <div className="container">
@@ -19,7 +66,10 @@ export default function Footer() {
             fitness routines to help you live a balanced, vibrant life.
           </p>
 
-          <form className={styles.subscribeForm}>
+          <form
+            className={styles.subscribeForm}
+            onSubmit={handleSubscribe}
+          >
             <span className={styles.mailIcon}>✉</span>
 
             <div className={styles.inputBox}>
@@ -27,15 +77,20 @@ export default function Footer() {
                 type="email"
                 className={styles.subscribeInput}
                 placeholder=" "
-                required
+                value={email || ""}                 // ✅ controlled input
+                onChange={(e) => setEmail(e.target.value)}  // ✅ state update
               />
               <label className={styles.floatingLabel}>
                 Enter your mail
               </label>
             </div>
 
-            <button type="submit" className={`${styles.subscribeBtn} cmnBtn`}>
-              Subscribe
+            <button
+              type="submit"
+              disabled={loading}
+              className={`${styles.subscribeBtn} cmnBtn`}
+            >
+              {loading ? "Subscribing..." : "Subscribe"}
             </button>
           </form>
         </div>

@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getFeaturedBlogs } from "@/redux/slice/blogSlice";
 import { log } from "console";
 import Link from "next/link";
+import { toast } from "sonner";
+import {  addBookmark, removeBookmark } from "@/redux/slice/bookmarkSlice";
 
 
 
@@ -22,6 +24,7 @@ export default function FeaturedBlogs() {
     const [bookmarked, setBookmarked] = useState<number[]>([]);
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
+    const { token } = useSelector((state: any) => state.auth);
 
     useEffect(() => {
         dispatch(getFeaturedBlogs())
@@ -29,12 +32,34 @@ export default function FeaturedBlogs() {
     console.log("kkk", featuredBlogs);
 
 
-    const toggleBookmark = (index: number) => {
-        setBookmarked((prev) =>
-            prev.includes(index)
-                ? prev.filter((i) => i !== index)
-                : [...prev, index]
-        );
+    const toggleBookmark = async (blogId: number) => {
+        if (!token) {
+            toast.error("Please login to bookmark");
+            return;
+        }
+
+        try {
+            if (bookmarked.includes(blogId)) {
+                // REMOVE
+                await dispatch(removeBookmark(blogId)).unwrap();
+
+                setBookmarked((prev) =>
+                    prev.filter((id) => id !== blogId)
+                );
+
+                toast.success("Bookmark removed");
+            } else {
+                // ADD
+                await dispatch(addBookmark(blogId)).unwrap();
+
+                setBookmarked((prev) => [...prev, blogId]);
+
+                toast.success("Bookmark added");
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error("Something went wrong");
+        }
     };
 
     const handleSwiperUpdate = (swiper: any) => {
@@ -108,10 +133,10 @@ export default function FeaturedBlogs() {
                                         className={styles.bookmark}
                                         onClick={(e) => {
                                             e.stopPropagation();
-                                            toggleBookmark(index);
+                                            toggleBookmark(blog.id);
                                         }}
                                     >
-                                        {bookmarked.includes(index) ? (
+                                        {bookmarked.includes(blog.id) ? (
                                             <FaBookmark />
                                         ) : (
                                             <FaRegBookmark />

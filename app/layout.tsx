@@ -9,6 +9,7 @@ import "aos/dist/aos.css";
 import Footer from "@/components/layout/footer/footer";
 import "@fortawesome/fontawesome-free/css/all.min.css"
 import Providers from "@/redux/provider/provider";
+import LayoutWrapper from "@/components/layout/loayoutWrapper/layoutwrapper";
 
 
 export const metadata: Metadata = {
@@ -40,9 +41,14 @@ export default function RootLayout({
         className={`${poppins.variable} ${playfair.variable} `}
       >
         <Providers>
-          <Header />
-          {children}
-          <Footer />
+          <LayoutWrapper>
+            {/* <Header /> */}
+            {children}
+            {/* <Footer /> */}
+
+          </LayoutWrapper>
+
+
 
         </Providers>
 

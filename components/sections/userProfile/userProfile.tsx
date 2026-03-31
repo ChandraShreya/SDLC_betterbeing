@@ -3,8 +3,29 @@
 import Image from "next/image";
 // import styles from "./Dashboard.module.css";
 import styles from "../userProfile/userProfile.module.css"
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getProfile, logout } from "@/redux/slice/authSlice";
 
 export default function Dashboard() {
+    const dispatch = useDispatch<any>();
+    const router = useRouter();
+
+    const {
+        userId,
+        username,
+        fullName,
+        email,
+        profileImage,
+        token
+    } = useSelector((state: any) => state.auth);
+
+    useEffect(() => {
+        if (token) {
+            dispatch(getProfile());
+        }
+    }, [dispatch, token]);
     return (
         <section className={styles.dashboardSec}>
             <div className="container">
@@ -33,7 +54,11 @@ export default function Dashboard() {
 
                             <Image
                                 className={styles.profileMain}
-                                src="/images/loged-in/arushi-pic.png"
+                                src={
+                                    profileImage
+                                        ? `http://127.0.0.1:8000${profileImage}`
+                                        : "/images/loged-in/arushi-pic.png"
+                                }
                                 alt=""
                                 width={100}
                                 height={100}
@@ -48,7 +73,7 @@ export default function Dashboard() {
                             />
                         </div>
 
-                        <h2 className={styles.userName}>Arushi Sharma</h2>
+                        <h2 className={styles.userName}>{fullName || "user"}</h2>
 
                         <div className={styles.dashboardButtons}>
                             <button className={styles.btnSwitch}>
@@ -61,7 +86,11 @@ export default function Dashboard() {
                                 Switch account
                             </button>
 
-                            <button className={styles.btnLogout}>
+                            <button className={styles.btnLogout}
+                                onClick={() => {
+                                    dispatch(logout());
+                                    router.push("/");
+                                }}>
                                 <Image
                                     src="/images/loged-in/logout-im.png"
                                     alt=""
@@ -132,7 +161,7 @@ export default function Dashboard() {
                                 </div>
                                 <div className={styles.infoText}>
                                     <span>User Id</span>
-                                    <p>USR-Aru24681357</p>
+                                    <p>{userId}</p>
                                 </div>
                             </div>
 
@@ -149,7 +178,7 @@ export default function Dashboard() {
                                     </div>
                                     <div className={styles.infoText}>
                                         <span>Username</span>
-                                        <p>iam.Arushi</p>
+                                        <p>{username || "Not available"}</p>
                                     </div>
                                     <div className={styles.editIcon}>
                                         <Image
@@ -174,7 +203,7 @@ export default function Dashboard() {
                                     </div>
                                     <div className={styles.infoText}>
                                         <span>Full Name</span>
-                                        <p>Arushi Sharma</p>
+                                        <p>{fullName || "Not available"}</p>
                                     </div>
                                     <div className={styles.editIcon}>
                                         <Image
@@ -200,7 +229,7 @@ export default function Dashboard() {
                                 </div>
                                 <div className={styles.infoText}>
                                     <span>Mail Id</span>
-                                    <p>arushisharma@gmail.com</p>
+                                    <p>{email || "Not available"}</p>
                                 </div>
                                 <div className={styles.editIcon}>
                                     <Image

@@ -5,12 +5,14 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
-import { getAllBlogs } from "@/redux/slice/blogSlice";
+import {  getAllBlogs } from "@/redux/slice/blogSlice";
 import { getCategories } from "@/redux/slice/categorySlice";
 import Link from "next/link";
 // import styles from "../latestBlogs/latestBlogs.module.css"
 import styles from "../blog_Article/latestArticles.module.css"
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
+import { toast } from "sonner";
+import { addBookmark } from "@/redux/slice/bookmarkSlice";
 
 export default function BlogListPage() {
   const dispatch = useDispatch();
@@ -18,6 +20,7 @@ export default function BlogListPage() {
   const allBlogs = useSelector((state) => state.blogs.blogs) || [];
   const loading = useSelector((state) => state.blogs.loading);
   const [bookmarked, setBookmarked] = useState<number[]>([]);
+  const { token } = useSelector((state: any) => state.auth);
   const categories = useSelector(
     (state) => state.category.categories
   ) || [];
@@ -31,13 +34,35 @@ export default function BlogListPage() {
     dispatch(getAllBlogs());
   }, [dispatch]);
 
-  const toggleBookmark = (index: number) => {
-    setBookmarked((prev) =>
-      prev.includes(index)
-        ? prev.filter((i) => i !== index)
-        : [...prev, index]
-    );
-  };
+    const toggleBookmark = async (blogId: number) => {
+        if (!token) {
+            toast.error("Please login to bookmark");
+            return;
+        }
+
+        try {
+            if (bookmarked.includes(blogId)) {
+                // REMOVE
+                await dispatch(removeBookmark(blogId)).unwrap();
+
+                setBookmarked((prev) =>
+                    prev.filter((id) => id !== blogId)
+                );
+
+                toast.success("Bookmark removed");
+            } else {
+                // ADD
+                await dispatch(addBookmark(blogId)).unwrap();
+
+                setBookmarked((prev) => [...prev, blogId]);
+
+                toast.success("Bookmark added");
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error("Something went wrong");
+        }
+    };
 
   // KEEP FILTERED BLOGS IN SYNC
   useEffect(() => {
@@ -117,10 +142,10 @@ export default function BlogListPage() {
                     className={styles.bookmark}
                     onClick={(e) => {
                       e.stopPropagation();
-                      toggleBookmark(index);
+                      toggleBookmark(blog.id);
                     }}
                   >
-                    {bookmarked.includes(index) ? (
+                    {bookmarked.includes(blog.id) ? (
                       <FaBookmark />
                     ) : (
                       <FaRegBookmark />
